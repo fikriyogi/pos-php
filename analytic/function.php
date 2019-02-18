@@ -214,7 +214,7 @@ function userLog() {
         $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         $user = $_SESSION['user'];
         $resolution = SR();
-        $mac = lat();
+        $mac = mac_address();
         mysqli_query($connect, "INSERT INTO 
   `analytic` (`id`, `ip`, `browser`, `os`, `hostname`, `device`, `url`, `user`, `resolution`, `mac`, `visit_date`) 
   VALUES (NULL, '$ip', '$browser', '$os', '$hostname', '$devices', '$url', '$user', '$resolution', '$mac', CURRENT_TIMESTAMP)");
@@ -225,6 +225,15 @@ function userLog() {
         print "$count[0]";
 }
 
+function mac_address() {
+  echo $mac = 'MAC ';
+  foreach (explode("\n", str_replace(' ', '', trim(`getmac`, "\n"))) as $i) if (strpos($i, 'Tcpip') > - 1)
+  {
+      $mac = substr($i, 0, 17);
+      break;
+  }
+  echo $mac; 
+}
 function lat() {
         $ip = @$_REQUEST['REMOTE_ADDR']; // the IP address to query
         $query = @unserialize(file_get_contents('http://ip-api.com/php/' . $ip));
