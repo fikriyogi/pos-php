@@ -1,8 +1,15 @@
 index.php
-<?php if ($row['banned']==1) { echo "<button class='btn btn-danger btn-sm remove'>Banned</button>"; } else { echo "<button class='btn btn-success btn-sm remove'>Aktif</button>"; } ?>
+<?php 
+if ($row['banned']==1) { 
+	echo "<button class='btn btn-danger btn-sm remove'>Banned</button>"; 
+} else { 
+	echo "<button class='btn btn-success btn-sm remove'>Aktif</button>"; 
+} 
+?>
 
 
 <!-- Ajax Delete -->
+<script src="js/jquery.min.js"></script>
 <script type="text/javascript">
 	  $(".remove").click(function(){
         var id = $(this).parents("tr").attr("id");
