@@ -12,3 +12,14 @@ tampil.php
 		echo	"</tr>";
 	}
 ?>
+
+
+<?= get_client_ip()?>
+<?= UserInfo::get_ip();?>
+<?= UserInfo::get_device();?>
+<?= UserInfo::get_os();?>
+<?= UserInfo::get_browser();?>
+<?= gethostname()?>
+<?= SR()?>
+<?= lat()?>
+<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
